@@ -10,7 +10,7 @@ app.use(express.static("public"));
 
 const db = require("./models");
 
-const MONGODB_URI = "mongodb://localhost/blogPosts";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/blogPosts";
 
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true })
