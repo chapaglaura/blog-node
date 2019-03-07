@@ -22,7 +22,8 @@
   "homepage": "https://github.com/chapaglaura/blog-node#readme",
   "dependencies": {
     "axios": "^0.18.0",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mongoose": "^5.4.17"
   },
   "devDependencies": {
     "concurrently": "^4.1.0"
