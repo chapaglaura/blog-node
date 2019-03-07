@@ -17,8 +17,16 @@ mongoose
   .then(() => console.log("Database connected successfully"))
   .catch(err => console.log(err));
 
+const path = require("path");
+
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
 app.get("/posts", (req, res) => {
-    console.log("getting posts");
+  console.log("getting posts");
   db.Post.find({})
     .then(data => res.json(data))
     .catch(err => console.log(err));
