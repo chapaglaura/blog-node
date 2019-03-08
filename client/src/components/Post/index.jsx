@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class Post extends Component {
   constructor(props) {
@@ -25,18 +26,28 @@ class Post extends Component {
     });
   }
 
+  deletePost = () => {
+    const {id} = this.props.match.params;
+    axios.delete(`/api/posts/${id}`).then(response => {
+      this.props.history.push("/");
+    })
+  }
+
   render() {
     console.log("rerender", this.state);
+    const { id } = this.props.match.params;
     return (
       <div className="my-5">
         <div className="jumbotron jumbotron-fluid">
           <div className="container">
             <h1 className="display-4">{this.state.title}</h1>
             <p className="lead">by {this.state.author}</p>
+            <Link to={`/posts/edit/${id}`}>Edit post</Link>
           </div>
         </div>
-        <div className='container'>
+        <div className="container">
           <p>{this.state.body}</p>
+          <a href="#" onClick={this.deletePost}>Delete Post</a>
         </div>
       </div>
     );

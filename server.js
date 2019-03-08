@@ -45,14 +45,14 @@ app.post("/api/posts/add", (req, res) => {
     .catch(err => console.log(err));
 });
 
-app.put("/api/posts/update/:id", (req, res) => {
+app.put("/api/posts/:id", (req, res) => {
   db.Post.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then(data => res.json(data))
     .catch(err => console.log(err));
 });
 
-app.delete("/api/posts/remove/:id", (req, res) => {
-  Post.deleteOne({ _id: req.params.id })
+app.delete("/api/posts/:id", (req, res) => {
+  db.Post.deleteOne({ _id: req.params.id })
     .then(data => res.json(data))
     .catch(err => console.log(err));
 });
