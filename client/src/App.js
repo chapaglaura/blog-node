@@ -13,7 +13,7 @@ class App extends Component {
 
   submitPost = data => {
     axios
-      .post("/posts/add", data)
+      .post("/api/posts/add", data)
       .then(response => {
         const data = response.data;
         let posts = [...this.state.posts];
@@ -26,7 +26,7 @@ class App extends Component {
   };
 
   componentDidMount = () => {
-    axios.get("/posts").then(response => {
+    axios.get("/api/posts").then(response => {
       const data = response.data;
       this.setState({
         posts: data

@@ -13,7 +13,7 @@ class Post extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    axios.get(`/posts/${id}`).then(response => {
+    axios.get(`/api/posts/${id}`).then(response => {
       const data = response.data;
       console.log(data);
       const { title, body, author } = response.data[0];

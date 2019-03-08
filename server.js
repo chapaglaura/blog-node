@@ -25,33 +25,33 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.get("/posts", (req, res) => {
+app.get("/api/posts", (req, res) => {
   console.log("getting posts");
   db.Post.find({})
     .then(data => res.json(data))
     .catch(err => console.log(err));
 });
 
-app.get("/posts/:id", (req, res) => {
+app.get("/api/posts/:id", (req, res) => {
   db.Post.find({ _id: req.params.id })
     .then(data => res.json(data))
     .catch(err => console.log(err));
 });
 
-app.post("/posts/add", (req, res) => {
+app.post("/api/posts/add", (req, res) => {
   console.log(req.body);
   db.Post.create(req.body)
     .then(data => res.json(data))
     .catch(err => console.log(err));
 });
 
-app.put("/posts/update/:id", (req, res) => {
+app.put("/api/posts/update/:id", (req, res) => {
   db.Post.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then(data => res.json(data))
     .catch(err => console.log(err));
 });
 
-app.delete("/posts/remove/:id", (req, res) => {
+app.delete("/api/posts/remove/:id", (req, res) => {
   Post.deleteOne({ _id: req.params.id })
     .then(data => res.json(data))
     .catch(err => console.log(err));
